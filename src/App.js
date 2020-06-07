@@ -12,10 +12,13 @@ class App extends Component {
     }
 
     render() {
+
+        const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
+
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" render={HomeComponent} />
                 </Switch>
             </Router>
         );
