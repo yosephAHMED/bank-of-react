@@ -24,12 +24,19 @@ class App extends Component {
         this.setState({currentUser: newUser});
     }
 
+    handleCredit = (amount) => {
+        this.setState({
+          newDebitAmount: amount,
+          accountBalance: this.state.accountBalance - this.state.newAmount,
+        })
+      }
+
     render() {
 
         const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
         const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
         const UserProfileComponent = () => (<UserProfile userName = {this.state.currentUser.userName} memberSince = {this.state.currentUser.memberSince}/>);
-        const DebitsComponent = () => (<Debits />);
+        const DebitsComponent = () => (<Debits debit = {this.state.newItem} newItem = {this.handleDebit} accountBalance = {this.state.accountBalance} />);
 
         return (
             <Router>
